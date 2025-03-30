@@ -1,4 +1,4 @@
 [[redirects]]
-from = "/en/*"
-to = "/en/NotFound.jsx"
+from = "/*"
+to = "/NotFound.jsx"
 status = 404
