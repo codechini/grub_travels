@@ -19,7 +19,7 @@ const PackageCard = ({ image, title, description, price, duration }) => {
           <span className="text-primary font-bold">{price}</span>
           <span className="text-gray-500">{duration}</span>
         </div>
-        <button className="mt-4 w-full bg-lime-200 py-2 px-4 rounded-md hover:bg-indigo-700 transition-colors duration-200">
+        <button className="mt-4 w-full bg-lime-200 py-2 px-4 rounded-md hover:bg-lime-300 transition-colors duration-200">
           Book Now
         </button>
       </div>
