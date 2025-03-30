@@ -27,7 +27,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             <Link to="/" className="text-gray-800 hover:text-gray-600">Home</Link>
-            <a href="/about" className="text-gray-800 hover:text-gray-600">About</a>
+            <Link to="/about" className="text-gray-800 hover:text-gray-600">About</Link>
             <Link to="/services" className="text-gray-800 hover:text-gray-600">Services</Link>
             <Link to="/gallery" className="text-gray-800 hover:text-gray-600">Gallery</Link>
             <Link to="/package-gallery" className="text-gray-800 hover:text-gray-600">Packages</Link>
@@ -64,7 +64,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
           <div className="md:hidden">
             <div className="flex flex-col space-y-4 px-2 pt-2 pb-3">
               <Link to="/" className="text-gray-800 hover:text-gray-600">Home</Link>
-              <a href="/about" className="text-gray-800 hover:text-gray-600">About</a>
+              <Link to="/about" className="text-gray-800 hover:text-gray-600">About</Link>
               <Link to="/services" className="text-gray-800 hover:text-gray-600">Services</Link>
               <Link to="/gallery" className="text-gray-800 hover:text-gray-600">Gallery</Link>
               <Link to="/package-gallery" className="text-gray-800 hover:text-gray-600">Packages</Link>
