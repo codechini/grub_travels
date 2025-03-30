@@ -1,0 +1,4 @@
+[[redirects]]
+from = "/en/*"
+to = "/en/NotFound.jsx"
+status = 404
