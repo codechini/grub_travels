@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
   const [isOpen, setIsOpen] = useState(false);
+  // const [userName, setUserName] = useState('');
   const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   const name = localStorage.getItem('UserData');
+  //   if (name) setUserName(name);
+  // }, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -11,6 +17,7 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
 
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
+    // localStorage.removeItem('userName');
     setIsAuthenticated(false);
     navigate('/signin');
   };
@@ -35,9 +42,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
               {isAuthenticated ? (
                 <button
                   onClick={handleLogout}
-                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                  className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 flex items-center gap-2"
                 >
-                  Logout
+                  {/* <span>{userName}</span> */}
+                  <span>Logout</span>
                 </button>
               ) : (
                 <Link to="/signin" className="w-full text-gray-700 bg-lime-100 hover:bg-lime-200 font-bold py-3 px-8 rounded-full transition duration-300 rounded-lg">
@@ -72,9 +80,10 @@ const Navbar = ({ isAuthenticated, setIsAuthenticated }) => {
                 {isAuthenticated ? (
                   <button
                     onClick={handleLogout}
-                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 flex items-center gap-2"
                   >
-                    Logout
+                    {/* <span>{userName}</span> */}
+                    <span>Logout</span>
                   </button>
                 ) : (
                   <Link to="/signin" className="w-full text-gray-700 bg-lime-100 hover:bg-lime-200 font-bold py-3 px-8 rounded-full transition duration-300 rounded-lg">
