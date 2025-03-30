@@ -1,6 +1,8 @@
-// import React from 'react';
+import { useState } from 'react';
 
 const Gallery = () => {
+  const [imageLoaded, setImageLoaded] = useState({});
+
   const galleryImages = [
     {
       id: 1,
@@ -44,6 +46,13 @@ const Gallery = () => {
     },
   ];
 
+  const handleImageLoad = (id) => {
+    setImageLoaded(prev => ({
+      ...prev,
+      [id]: true
+    }));
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
@@ -62,10 +71,14 @@ const Gallery = () => {
               key={image.id}
               className="relative overflow-hidden rounded-lg shadow-lg group h-[40vh]"
             >
+              <div className={`absolute inset-0 bg-gray-200 animate-pulse ${imageLoaded[image.id] ? 'hidden' : 'block'}`} />
               <img
                 src={image.url}
                 alt={image.title}
-                className="w-full h-100 object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
+                loading="lazy"
+                onLoad={() => handleImageLoad(image.id)}
+                className={`w-full h-full object-cover transition-transform duration-300 ease-in-out group-hover:scale-110 ${imageLoaded[image.id] ? 'opacity-100' : 'opacity-0'
+                  }`}
               />
               <div className="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-70 transition-opacity duration-300 flex items-center justify-center">
                 <h3 className="text-lime-200 text-center text-xl font-semibold">{image.title}</h3>

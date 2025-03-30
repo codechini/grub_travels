@@ -30,6 +30,7 @@ const About = () => {
                 src="https://images.unsplash.com/photo-1522071820081-009f0129c71c"
                 alt="GRUB Travel Team"
                 className="w-full h-full object-cover rounded-lg"
+                loading="lazy"
               />
             </div>
           </div>
