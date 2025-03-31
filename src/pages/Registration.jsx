@@ -7,7 +7,9 @@ const Registration = () => {
     name: '',
     email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    dob: '',
+    gender: ''
   });
   const [errors, setErrors] = useState({});
 
@@ -21,12 +23,20 @@ const Registration = () => {
 
   const validateForm = () => {
     const newErrors = {};
+    const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
     if (!formData.name) newErrors.name = 'Name is required';
     if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) newErrors.password = 'Password is required';
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (!passwordRegex.test(formData.password)) {
+      newErrors.password = 'Password must be at least 8 characters long, contain a number and a special character';
+    }
     if (formData.password !== formData.confirmPassword) {
       newErrors.confirmPassword = 'Passwords do not match';
     }
+    if (!formData.dob) newErrors.dob = 'Date of Birth is required';
+    if (!formData.gender) newErrors.gender = 'Gender is required';
     return newErrors;
   };
 
@@ -34,11 +44,12 @@ const Registration = () => {
     e.preventDefault();
     const newErrors = validateForm();
     if (Object.keys(newErrors).length === 0) {
-      // Store user data in localStorage
       const userData = {
         name: formData.name,
         email: formData.email,
-        password: formData.password
+        password: formData.password,
+        dob: formData.dob,
+        gender: formData.gender
       };
       localStorage.setItem('userData', JSON.stringify(userData));
       console.log('Registration successful:', formData);
@@ -87,6 +98,9 @@ const Registration = () => {
                 onChange={handleChange}
                 className="w-full px-3 py-2 border rounded-lg"
               />
+              <p className="text-gray-500 text-xs mt-1">
+                Password must be at least 8 characters long, contain a number and a special character
+              </p>
               {errors.password && <p className="text-red-500 text-sm">{errors.password}</p>}
             </div>
 
@@ -100,6 +114,34 @@ const Registration = () => {
                 className="w-full px-3 py-2 border rounded-lg"
               />
               {errors.confirmPassword && <p className="text-red-500 text-sm">{errors.confirmPassword}</p>}
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Date of Birth</label>
+              <input
+                type="date"
+                name="dob"
+                value={formData.dob}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-lg"
+              />
+              {errors.dob && <p className="text-red-500 text-sm">{errors.dob}</p>}
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-gray-700 mb-2">Gender</label>
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleChange}
+                className="w-full px-3 py-2 border rounded-lg"
+              >
+                <option value="">Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
+              {errors.gender && <p className="text-red-500 text-sm">{errors.gender}</p>}
             </div>
 
             <button
