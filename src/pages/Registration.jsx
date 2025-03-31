@@ -21,25 +21,6 @@ const Registration = () => {
     }));
   };
 
-  const validateForm = () => {
-    const newErrors = {};
-    const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
-
-    if (!formData.name) newErrors.name = 'Name is required';
-    if (!formData.email) newErrors.email = 'Email is required';
-    if (!formData.password) {
-      newErrors.password = 'Password is required';
-    } else if (!passwordRegex.test(formData.password)) {
-      newErrors.password = 'Password must be at least 8 characters long, contain a number and a special character';
-    }
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
-    }
-    if (!formData.dob) newErrors.dob = 'Date of Birth is required';
-    if (!formData.gender) newErrors.gender = 'Gender is required';
-    return newErrors;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const newErrors = validateForm();
@@ -57,6 +38,25 @@ const Registration = () => {
     } else {
       setErrors(newErrors);
     }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    const passwordRegex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+
+    if (!formData.name) newErrors.name = 'Name is required';
+    if (!formData.email) newErrors.email = 'Email is required';
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    } else if (!passwordRegex.test(formData.password)) {
+      newErrors.password = 'Password must be at least 8 characters long, contain a number and a special character';
+    }
+    if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Passwords do not match';
+    }
+    if (!formData.dob) newErrors.dob = 'Date of Birth is required';
+    if (!formData.gender) newErrors.gender = 'Gender is required';
+    return newErrors;
   };
 
   return (
