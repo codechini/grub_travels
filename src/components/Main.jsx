@@ -14,7 +14,7 @@ const Main = () => {
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
             Discover <ChangeCity /> with Discounts like never before!
           </p>
-          <Link to="../package-gallery" className="text-gray-700 bg-lime-100 hover:bg-lime-200 font-bold py-3 px-8 rounded-full transition duration-300">
+          <Link to="../login" className="text-gray-700 bg-lime-100 hover:bg-lime-200 font-bold py-3 px-8 rounded-full transition duration-300">
             <button>
               Book Now
             </button>

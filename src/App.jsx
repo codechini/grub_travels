@@ -5,6 +5,7 @@ import Layout from './components/Layout';
 import About from './pages/About';
 import Gallery from './pages/Gallery';
 import Home from './pages/Home';
+import Login from './pages/Login';
 import NotFound from './pages/NotFound';
 import PackageGallery from './pages/PackageGallery';
 import Registration from './pages/Registration';
@@ -53,6 +54,11 @@ function App() {
           <Route path='gallery' element={
             <PrivateRoute>
               <Gallery />
+            </PrivateRoute>
+          } />
+          <Route path='login' element={
+            <PrivateRoute>
+              <Login />
             </PrivateRoute>
           } />
           <Route path="*" element={<NotFound />} />
