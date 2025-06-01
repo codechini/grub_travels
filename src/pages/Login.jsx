@@ -18,7 +18,7 @@ const Login = () => {
     "Bali Paradise",
     "Swiss Alps",
     "Paris",
-    "Tokyo",
+    "Kyoto",
     "Maldives",
     "African Safari",
     "Greek Islands",
